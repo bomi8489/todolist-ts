@@ -7,7 +7,6 @@ function AdditionalBox() {
     return (
         <AdditionBox>
             <ClockBox />
-            {/* <WeatherBox/>  */}
         </AdditionBox>
     )
 }

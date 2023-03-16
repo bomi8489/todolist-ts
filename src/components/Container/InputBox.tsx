@@ -8,8 +8,8 @@ import {
 
 interface InputBoxProps {
     listvalue: string;
-    onChange: Function;
-    onCreate: Function;
+    onChange: React.ChangeEventHandler<HTMLInputElement>;
+    onCreate: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 const InputBox = React.memo(({ listvalue, onChange, onCreate }: InputBoxProps) => {

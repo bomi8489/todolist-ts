@@ -11,7 +11,14 @@ margin-top: 0;
 margin-bottom: 10px;
 `
 
-const Input = styled.input`
+interface InputProps {
+    name: string;
+    onChange: React.ChangeEventHandler<HTMLInputElement>;
+    value: string;
+    submit: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const Input = styled.input<InputProps>`
 text-align: center;
 font-family: 'Do Hyeon', cursive;
 font-weight: bold;
@@ -26,7 +33,11 @@ border-bottom-width:1;
 color: #f8f8f2;
 `
 
-const Button = styled.button`
+interface ButtonProps {
+    onClick: React.MouseEventHandler<HTMLButtonElement>;
+}
+
+const Button = styled.button<ButtonProps>`
 display: none;
 `
 
