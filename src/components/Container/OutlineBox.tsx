@@ -13,7 +13,7 @@ interface OutlineBoxProps {
     listvalue: string;
     todoLists: todoList[];
     onChange: React.ChangeEventHandler<HTMLInputElement>;
-    onCreate: React.MouseEventHandler<HTMLButtonElement>;
+    onCreate: React.FormEventHandler<HTMLFormElement>;
     onRemove: Function;
 }
 

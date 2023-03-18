@@ -1,13 +1,13 @@
 import React from "react";
 // import useInterval from 'use-interval';
-import {
-    Clock,
-    Clock24,
-    ClockAmpm,
-    SwitchInput,
-    SwitchInputLabel,
-    OnoffBtn,
-} from "../Presenter/ClockBoxPresenter";
+// import {
+//     Clock,
+//     Clock24,
+//     ClockAmpm,
+//     SwitchInput,
+//     SwitchInputLabel,
+//     OnoffBtn,
+// } from "../Presenter/ClockBoxPresenter";
 
 function ClockBox() {
     // const nowdate = new Date().toLocaleTimeString();

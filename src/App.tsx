@@ -2,6 +2,10 @@ import React, { useRef, useState, useCallback, useEffect } from 'react';
 import OutlineBox from "./components/Container/OutlineBox";
 
 function App() {
+  interface TodoList {
+    id: number;
+    listvalue: string;
+  }
 
   // 입력창 상태 관리
   const [inputs, setInputs] = useState({
@@ -10,7 +14,7 @@ function App() {
 
   const { listvalue } = inputs;
 
-  const onChange = useCallback(e => {
+  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setInputs(inputs => ({
       ...inputs,
@@ -20,10 +24,10 @@ function App() {
 
   // todolist 상태관리
   let savedId = 0;
-  const [todoLists, setTodoLists] = useState(() => {
+  const [todoLists, setTodoLists] = useState<TodoList[]>(() => {
     if (typeof window !== "undefined") {
-      const savedtodo = window.localStorage.getItem("todo")
-      if (JSON.parse(savedtodo)[0] !== undefined) {
+      const savedtodo: string | null = window.localStorage.getItem("todo")
+      if ((typeof savedtodo === "string") && JSON.parse(savedtodo)[0] !== undefined) {
         savedId = JSON.parse(savedtodo)[JSON.parse(savedtodo).length - 1].id + 1
         return JSON.parse(savedtodo)
       } else {
@@ -35,7 +39,7 @@ function App() {
   const nextId = useRef(savedId);
 
   // todo 생성함수
-  const onCreate = useCallback(e => {
+  const onCreate = useCallback((e) => {
     e.preventDefault();
     const todoList = {
       id: nextId.current,
@@ -50,7 +54,7 @@ function App() {
   }, [listvalue]);
 
   // todo 삭제함수
-  const onRemove = useCallback((id: string) => {
+  const onRemove = useCallback((id: number) => {
     setTodoLists(todoLists => todoLists.filter(todoList => todoList.id !== id));
   }, []);
 

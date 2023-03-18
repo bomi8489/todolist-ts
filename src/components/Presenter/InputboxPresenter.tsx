@@ -15,7 +15,7 @@ interface InputProps {
     name: string;
     onChange: React.ChangeEventHandler<HTMLInputElement>;
     value: string;
-    submit: React.MouseEventHandler<HTMLButtonElement>;
+    submit: React.FormEventHandler<HTMLFormElement>;
 }
 
 const Input = styled.input<InputProps>`
@@ -33,11 +33,7 @@ border-bottom-width:1;
 color: #f8f8f2;
 `
 
-interface ButtonProps {
-    onClick: React.MouseEventHandler<HTMLButtonElement>;
-}
-
-const Button = styled.button<ButtonProps>`
+const Button = styled.button`
 display: none;
 `
 
