@@ -39,7 +39,7 @@ function App() {
   const nextId = useRef(savedId);
 
   // todo 생성함수
-  const onCreate = useCallback((e) => {
+  const onCreate = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     const todoList = {
       id: nextId.current,
