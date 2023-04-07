@@ -26,7 +26,7 @@ function App() {
   let savedId = 0;
   const [todoLists, setTodoLists] = useState<TodoList[]>(() => {
     if (typeof window !== "undefined") {
-      const savedtodo: string | null = window.localStorage.getItem("todo")
+      const savedtodo = window.localStorage.getItem("todo")
       if ((typeof savedtodo === "string") && JSON.parse(savedtodo)[0] !== undefined) {
         savedId = JSON.parse(savedtodo)[JSON.parse(savedtodo).length - 1].id + 1
         return JSON.parse(savedtodo)
@@ -63,8 +63,6 @@ function App() {
   useEffect(() => {
     window.localStorage.setItem("todo", JSON.stringify(todoLists))
   }, [todoLists])
-
-
 
   return (
     <OutlineBox
