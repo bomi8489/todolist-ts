@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { add } from "../../store";
+import { add } from "../../store/todoSlice";
 import {
     Inputbox,
     Subtitle,
@@ -10,6 +10,7 @@ import {
 const InputBox = React.memo(() => {
     const [text, setText] = useState("");
     const dispatch = useDispatch();
+
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setText(e.target.value);
     }

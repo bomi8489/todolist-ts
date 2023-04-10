@@ -5,7 +5,7 @@ import {
     Contents,
 } from "../Presenter/ContainerboxPresenter";
 
-function ContainerBox() {
+const ContainerBox = () => {
     return (
         <Containerbox>
             <Contents>

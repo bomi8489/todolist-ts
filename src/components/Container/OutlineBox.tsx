@@ -4,7 +4,7 @@ import InputBox from "./InputBox";
 import AdditionalBox from "./AdditionalBox";
 import Todolist from "../Presenter/TodolistPresenter";
 
-function OutlineBox() {
+const OutlineBox = () => {
     return (
         <Todolist>
             <AdditionalBox />

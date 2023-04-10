@@ -1,13 +1,12 @@
 import {
-    configureStore,
     createSlice,
     PayloadAction
 } from "@reduxjs/toolkit"
-import { Todo } from "./types"
+import { Todo } from "../types"
 
 const initialState: Todo[] = [];
 
-const todoList = createSlice({
+const todoSlice = createSlice({
     name: 'toDosReducer',
     initialState,
     reducers: {
@@ -20,7 +19,5 @@ const todoList = createSlice({
     }
 })
 
-const store = configureStore({ reducer: todoList.reducer });
-export const { add, remove } = todoList.actions;
-export type todoListState = ReturnType<typeof store.getState>;
-export default store
+export const { add, remove } = todoSlice.actions;
+export default todoSlice;

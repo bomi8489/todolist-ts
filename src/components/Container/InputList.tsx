@@ -3,13 +3,25 @@ import {
     useDispatch,
     useSelector,
 } from "react-redux";
-import { remove, todoListState } from "../../store";
-import { ListBoxProps } from "../../types";
+import { todoListState } from "../../store/index";
+import { remove } from "../../store/todoSlice";
+import { ListBoxProps, Todo } from "../../types";
 import {
     Inputlist,
     Button,
     Contentsvalue,
 } from "../Presenter/InputlistPresenter"
+
+const InputList = React.memo(() => {
+    const todoLists = useSelector((todoList: todoListState) => todoList);
+    return (
+        <>
+            {todoLists.todoReducer.map((toDo: Todo) => (
+                <ListBox toDo={toDo} key={toDo.id} />
+            ))}
+        </>
+    )
+})
 
 const ListBox = React.memo(({ toDo }: ListBoxProps) => {
     const dispatch = useDispatch();
@@ -21,17 +33,6 @@ const ListBox = React.memo(({ toDo }: ListBoxProps) => {
             <Contentsvalue>{toDo.listvalue}</Contentsvalue>
             <Button onClick={() => onRemove(toDo.id)}>삭제</Button>
         </Inputlist>
-    )
-})
-
-const InputList = React.memo(() => {
-    const todoList = useSelector((todoList: todoListState) => todoList);
-    return (
-        <>
-            {todoList.map(toDo => (
-                <ListBox toDo={toDo} key={toDo.id} />
-            ))}
-        </>
     )
 })
 
