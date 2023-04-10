@@ -1,12 +1,8 @@
 import React, { useRef, useState, useCallback, useEffect } from 'react';
 import OutlineBox from "./components/Container/OutlineBox";
+import { Todo } from './types';
 
 function App() {
-  interface TodoList {
-    id: number;
-    listvalue: string;
-  }
-
   // 입력창 상태 관리
   const [inputs, setInputs] = useState({
     listvalue: ''
@@ -24,7 +20,7 @@ function App() {
 
   // todolist 상태관리
   let savedId = 0;
-  const [todoLists, setTodoLists] = useState<TodoList[]>(() => {
+  const [todoList, setTodoLists] = useState<Todo[]>(() => {
     if (typeof window !== "undefined") {
       const savedtodo = window.localStorage.getItem("todo")
       if ((typeof savedtodo === "string") && JSON.parse(savedtodo)[0] !== undefined) {
@@ -41,11 +37,11 @@ function App() {
   // todo 생성함수
   const onCreate = useCallback((e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    const todoList = {
+    const todo = {
       id: nextId.current,
       listvalue
     };
-    setTodoLists(todoLists => [...todoLists, todoList]);
+    setTodoLists(todoLists => [...todoLists, todo]);
 
     setInputs({
       listvalue: ''
@@ -58,20 +54,13 @@ function App() {
     setTodoLists(todoLists => todoLists.filter(todoList => todoList.id !== id));
   }, []);
 
-
   // 로컬스토리지 저장함수
   useEffect(() => {
-    window.localStorage.setItem("todo", JSON.stringify(todoLists))
-  }, [todoLists])
+    window.localStorage.setItem("todo", JSON.stringify(todoList))
+  }, [todoList])
 
   return (
-    <OutlineBox
-      listvalue={listvalue}
-      todoLists={todoLists}
-      onChange={onChange}
-      onCreate={onCreate}
-      onRemove={onRemove}
-    />
+    <OutlineBox />
   );
 }
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { InputProps } from '../../types';
 
 const Inputbox = styled.div`
 text-align: center;
@@ -10,13 +11,6 @@ const Subtitle = styled.h2`
 margin-top: 0;
 margin-bottom: 10px;
 `
-
-interface InputProps {
-    name: string;
-    onChange: React.ChangeEventHandler<HTMLInputElement>;
-    value: string;
-    submit: React.FormEventHandler<HTMLFormElement>;
-}
 
 const Input = styled.input<InputProps>`
 text-align: center;
@@ -33,8 +27,4 @@ border-bottom-width:1;
 color: #f8f8f2;
 `
 
-const Button = styled.button`
-display: none;
-`
-
-export { Inputbox, Subtitle, Input, Button };
+export { Inputbox, Subtitle, Input };

@@ -3,29 +3,15 @@ import InputList from "./InputList";
 import {
     Containerbox,
     Contents,
-
 } from "../Presenter/ContainerboxPresenter";
 
-interface todoList {
-    listvalue: string;
-    id: number;
-}
-
-interface ContainerBoxProps {
-    todoLists: todoList[];
-    onRemove: Function;
-}
-
-function ContainerBox({ todoLists, onRemove }: ContainerBoxProps) {
+function ContainerBox() {
     return (
         <Containerbox>
             <Contents>
                 <h1>To Do List</h1>
                 <ul>
-                    <InputList
-                        todoLists={todoLists}
-                        onRemove={onRemove}
-                    />
+                    <InputList />
                 </ul>
             </Contents>
         </Containerbox>

@@ -1,39 +1,35 @@
 import React from "react";
 import {
+    useDispatch,
+    useSelector,
+} from "react-redux";
+import { remove, todoListState } from "../../store";
+import { ListBoxProps } from "../../types";
+import {
     Inputlist,
     Button,
     Contentsvalue,
 } from "../Presenter/InputlistPresenter"
 
-interface todoList {
-    listvalue: string;
-    id: number;
-}
-
-interface ListBoxProps {
-    todoList: todoList;
-    onRemove: Function;
-}
-
-interface InputListProps {
-    todoLists: todoList[];
-    onRemove: Function;
-}
-
-const ListBox = React.memo(({ todoList, onRemove }: ListBoxProps) => {
+const ListBox = React.memo(({ toDo }: ListBoxProps) => {
+    const dispatch = useDispatch();
+    const onRemove = (id: number) => {
+        dispatch(remove(id));
+    }
     return (
         <Inputlist>
-            <Contentsvalue>{todoList.listvalue}</Contentsvalue>
-            <Button onClick={() => onRemove(todoList.id)}>삭제</Button>
+            <Contentsvalue>{toDo.listvalue}</Contentsvalue>
+            <Button onClick={() => onRemove(toDo.id)}>삭제</Button>
         </Inputlist>
     )
 })
 
-const InputList = React.memo(({ todoLists, onRemove }: InputListProps) => {
+const InputList = React.memo(() => {
+    const todoList = useSelector((todoList: todoListState) => todoList);
     return (
         <>
-            {todoLists.map(todoList => (
-                <ListBox todoList={todoList} key={todoList.id} onRemove={onRemove} />
+            {todoList.map(toDo => (
+                <ListBox toDo={toDo} key={toDo.id} />
             ))}
         </>
     )

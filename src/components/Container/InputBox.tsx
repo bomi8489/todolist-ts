@@ -1,31 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { add } from "../../store";
 import {
     Inputbox,
     Subtitle,
     Input,
-    Button
 } from "../Presenter/InputboxPresenter"
 
-interface InputBoxProps {
-    listvalue: string;
-    onChange: React.ChangeEventHandler<HTMLInputElement>;
-    onCreate: React.FormEventHandler<HTMLFormElement>;
-}
+const InputBox = React.memo(() => {
+    const [text, setText] = useState("");
+    const dispatch = useDispatch();
+    const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setText(e.target.value);
+    }
 
-const InputBox = React.memo(({ listvalue, onChange, onCreate }: InputBoxProps) => {
+    const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        dispatch(add(text));
+        setText("");
+    }
+
     return (
         <Inputbox>
             <Subtitle>아래 입력칸에 오늘 할일을 입력해주세요</Subtitle>
-            <form onSubmit={onCreate}>
+            <form onSubmit={onSubmit}>
                 <Input
                     name="inputbox"
                     onChange={onChange}
-                    value={listvalue}
-                    submit={onCreate}
+                    value={text}
+                    submit={onSubmit}
                 />
-                <Button type="submit"></Button>
             </form>
-
         </Inputbox>
     )
 })
