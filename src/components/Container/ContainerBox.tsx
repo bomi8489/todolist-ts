@@ -1,4 +1,3 @@
-import React from "react";
 import InputList from "./InputList";
 import {
     Containerbox,
@@ -18,4 +17,4 @@ const ContainerBox = () => {
     )
 }
 
-export default React.memo(ContainerBox);
+export default ContainerBox;

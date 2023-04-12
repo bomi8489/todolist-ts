@@ -1,4 +1,3 @@
-import React from "react";
 import ClockBox from "./ClockBox";
 import { AdditionBox } from "../Presenter/AdditionBoxPresenter";
 
@@ -11,4 +10,4 @@ function AdditionalBox() {
     )
 }
 
-export default React.memo(AdditionalBox);
+export default AdditionalBox;

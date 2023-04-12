@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { InputProps } from '../../types';
 
 const Inputbox = styled.div`
 text-align: center;
@@ -12,7 +11,7 @@ margin-top: 0;
 margin-bottom: 10px;
 `
 
-const Input = styled.input<InputProps>`
+const Input = styled.input`
 text-align: center;
 font-family: 'Do Hyeon', cursive;
 font-weight: bold;

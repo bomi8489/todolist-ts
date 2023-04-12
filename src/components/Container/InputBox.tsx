@@ -7,12 +7,12 @@ import {
     Input,
 } from "../Presenter/InputboxPresenter"
 
-const InputBox = React.memo(() => {
+const InputBox = () => {
     const [text, setText] = useState("");
     const dispatch = useDispatch();
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setText(e.target.value);
+        (e.target.value.length > 20) ? setText(prev => prev) : setText(e.target.value);
     }
 
     const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -29,11 +29,10 @@ const InputBox = React.memo(() => {
                     name="inputbox"
                     onChange={onChange}
                     value={text}
-                    submit={onSubmit}
                 />
             </form>
         </Inputbox>
     )
-})
+}
 
-export default React.memo(InputBox);
+export default InputBox;
