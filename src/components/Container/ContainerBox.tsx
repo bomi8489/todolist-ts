@@ -1,4 +1,4 @@
-import InputList from "./InputList";
+import TodolistBox from "./TodolistBox";
 import {
     Containerbox,
     Contents,
@@ -10,7 +10,7 @@ const ContainerBox = () => {
             <Contents>
                 <h1>To Do List</h1>
                 <ul>
-                    <InputList />
+                    <TodolistBox />
                 </ul>
             </Contents>
         </Containerbox>

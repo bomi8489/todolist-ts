@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const Inputlist = styled.li`
+const Todolist = styled.li`
 height: 30px;
 display: flex;
 justify-content: center;
@@ -25,4 +25,4 @@ flex-grow: 1;
 font-size: 1.5rem;
 `
 
-export { Inputlist, Button, Contentsvalue };
+export { Todolist, Button, Contentsvalue };

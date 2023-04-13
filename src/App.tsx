@@ -3,7 +3,7 @@ import ContainerBox from "./components/Container/ContainerBox";
 import InputBox from "./components/Container/InputBox";
 import styled from 'styled-components';
 
-const Todolist = styled.div`
+const OutlineBox = styled.div`
 width: 50vw;
 height: 100%;
 border: solid 5px none;
@@ -16,11 +16,11 @@ text-align: center;
 
 const App = () => {
   return (
-    <Todolist>
+    <OutlineBox>
       <AdditionalBox />
       <ContainerBox />
       <InputBox />
-    </Todolist>
+    </OutlineBox>
   );
 }
 

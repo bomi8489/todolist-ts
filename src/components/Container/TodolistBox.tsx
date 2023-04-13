@@ -3,12 +3,12 @@ import { todoListState } from "../../store/index";
 import { remove } from "../../store/todoSlice";
 import { Todo } from "../../types";
 import {
-    Inputlist,
+    Todolist,
     Button,
     Contentsvalue,
 } from "../Presenter/InputlistPresenter"
 
-const InputList = () => {
+const TodolistBox = () => {
     const todoLists = useSelector((todoList: todoListState) => todoList);
     const dispatch = useDispatch();
 
@@ -19,13 +19,13 @@ const InputList = () => {
     return (
         <>
             {todoLists.todoReducer.map((toDo: Todo) => (
-                <Inputlist key={toDo.id}>
+                <Todolist key={toDo.id}>
                     <Contentsvalue>{toDo.listvalue}</Contentsvalue>
                     <Button onClick={() => onRemove(toDo.id)}>삭제</Button>
-                </Inputlist>
+                </Todolist>
             ))}
         </>
     )
 }
 
-export default InputList;
+export default TodolistBox;
